@@ -1,8 +1,7 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 from django.views import View
 
 class HomePage(View):
-    greeting = "Hello there!"
 
     def get(self, request):
-        return HttpResponse(self.greeting)
+        return render(request, 'pieapp/index.html')
