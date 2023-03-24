@@ -10,7 +10,7 @@ this is a project, where i try to create pie-chart on django-site.
 2. activate it
 > ./venv/Scripts/activate
 3. install requirements
-> pip install -r requirements.txt
+> pip install -r ./pieproject/requirements.txt
 4. create .env file with:
 > SECRET_KEY = your django key
 > DEBUG = True
