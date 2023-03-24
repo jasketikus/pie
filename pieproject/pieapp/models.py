@@ -6,7 +6,7 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
 
 class Characteristic(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=30)
 
 class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
