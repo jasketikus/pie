@@ -5,13 +5,22 @@ from django.views.generic import CreateView
 from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import *
 
 class HomePage(View):
-
     def get(self, request):
-        return render(request, 'pieapp/index.html')
+        if request.user.is_authenticated:
+            return redirect('profile')
+        else:
+            return render(request, 'pieapp/index.html')
+    
+class ProfilePage(LoginRequiredMixin, View):
+    template_name = 'pieapp/profile.html'
+    raise_exception = True
+    def get(self, request):
+        return render(request, 'pieapp/profile.html')
 
 class RegisterPage(CreateView):
     form_class = RegisterUserForm
