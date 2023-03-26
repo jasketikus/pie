@@ -2,5 +2,5 @@
 
 {% block content %}
     <h1>Welcome PIEAPP</h1>
-    <p>Please log in or sign up to continue.</p>
+    <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">sign up</a> to continue.</p>
 {% endblock %}
