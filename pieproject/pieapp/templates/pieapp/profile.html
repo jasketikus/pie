@@ -1,5 +1,20 @@
 {% extends 'pieapp/base.html' %}
 
 {% block content %}
-    <h1>Welcome, {{user.username}}</h1>
+<h1>Welcome, {{user.username}}</h1>
+<div class="row">
+    <div class="column">
+        <aside class="block">
+        <!-- left side block -->
+        <p>Characteristic 1</p>
+        <p>Characteristic 2</p>
+        <p>Characteristic 3</p>
+        <p>Characteristic 4</p>
+        <p>Characteristic 5</p>
+        <p>Add new ...</p>
+        </aside>
+    </div>
+    <div class="column">Колонка 2</div>
+    <div class="column">Колонка 3</div>
+  </div>
 {% endblock %}

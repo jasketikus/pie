@@ -4,21 +4,63 @@ html, body {
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	color: #444;
+	color: #444
 }
 .logo {
 	background: url('../images/logo.png') no-repeat 10px 5px;
 	width: 70px;
 	height: 60px;
 }
-.container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+
+/* стили для основных блоков */
+.block {
+	border: 2px solid #000;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+/* стили для хедера */
+header {
+	display: flex;
+	background-color: #ffffff;
+	padding: 10px;
+  
+}
+/* стили для основного содержимого страницы */
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+}
+/* стили для бокового меню */
+aside {
+	width: 200px;
+	background-color: #eee;
+	padding: 10px;
   }
-.header {
-	width: 50%; 
+/* стили для футера */
+footer {
+	text-align: center;
+	background-color: #ccc;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+  }
+/* Общие стили для всех блоков */
+div {
+	border: 2px solid #000;
+	margin: 10px;
+	padding: 10px;
+  }
+  .row {
+	width: 100%;
 	margin: 0 auto;
-	margin-left: 50px;
+  }
+  
+  .column {
+	display: inline-block;
+	width: 30%;
+	margin: 10px;
+	vertical-align: top;
   }
