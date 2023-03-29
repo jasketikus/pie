@@ -7,6 +7,7 @@ class Profile(models.Model):
 
 class Characteristic(models.Model):
     name = models.CharField(max_length=30)
+    is_published = models.BooleanField(default=False, verbose_name='Published')
 
 class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
