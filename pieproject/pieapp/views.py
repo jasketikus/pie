@@ -45,3 +45,17 @@ class LoginPage(LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+class AddCharacteristic(CreateView):
+    form_class = AddCharacteristicForm
+    template_name = 'pieapp/addchar.html'
+    characteristics = Characteristic.objects.all()
+    
+    def form_valid(self, form):
+        characteristic = form.save()
+        return redirect('profile')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['characteristics'] = Characteristic.objects.all()
+        return context

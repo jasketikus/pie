@@ -19,3 +19,12 @@ class RegisterUserForm(UserCreationForm):
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'class': 'form-input'}))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+
+
+class AddCharacteristicForm(forms.ModelForm):
+    name = forms.CharField(label='Name', widget=forms.TextInput(attrs={'class': 'form-input'}))
+
+    class Meta:
+        model = Characteristic
+        fields = ('name', )
+

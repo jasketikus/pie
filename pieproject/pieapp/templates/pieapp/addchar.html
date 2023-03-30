@@ -1,0 +1,33 @@
+{% extends 'pieapp/base.html' %}
+
+{% block content %}
+<h1>Welcome, {{user.username}}</h1>
+<div class="row">
+    <div class="column">
+        <aside class="block">
+        <!-- left side block -->
+          {% for char in characteristics %}
+          <p>{{ char.name }}</p>
+          {% endfor %}
+        <p>Add new ...</p>
+        </aside>
+    </div>
+    <div class="column">
+        <form method="post">
+            {% csrf_token %}
+        
+            {% for f in form %}
+                <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+                <div class="form-error">{{ f.errors }}</div>
+            {% endfor %}
+        
+            <button type="submit">Add Charac</button>
+        </form>
+    </div>
+
+    <div class="column">
+        Empty column
+    </div>
+
+  </div>
+{% endblock %}
