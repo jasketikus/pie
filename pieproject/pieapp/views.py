@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import *
+from .models import *
 
 class HomePage(View):
     def get(self, request):
@@ -20,7 +21,8 @@ class ProfilePage(LoginRequiredMixin, View):
     template_name = 'pieapp/profile.html'
     raise_exception = True
     def get(self, request):
-        return render(request, 'pieapp/profile.html')
+        characteristics = Characteristic.objects.all()
+        return render(request, 'pieapp/profile.html', {'characteristics': characteristics})
 
 class RegisterPage(CreateView):
     form_class = RegisterUserForm
