@@ -6,6 +6,7 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
 
 class Characteristic(models.Model):
+    user = models.ForeignKey(User, default=User.username, on_delete=models.CASCADE, verbose_name='Author')
     name = models.CharField(max_length=30)
     is_published = models.BooleanField(default=True, verbose_name='Published')
 

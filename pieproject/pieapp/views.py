@@ -21,7 +21,7 @@ class ProfilePage(LoginRequiredMixin, View):
     template_name = 'pieapp/profile.html'
     raise_exception = True
     def get(self, request):
-        characteristics = Characteristic.objects.all()
+        characteristics = Characteristic.objects.filter(user=request.user)
         return render(request, 'pieapp/profile.html', {'characteristics': characteristics})
 
 class RegisterPage(CreateView):
@@ -49,13 +49,14 @@ def logout_user(request):
 class AddCharacteristic(CreateView):
     form_class = AddCharacteristicForm
     template_name = 'pieapp/addchar.html'
-    characteristics = Characteristic.objects.all()
     
     def form_valid(self, form):
-        characteristic = form.save()
+        characteristic = form.save(commit=False)
+        characteristic.user = self.request.user
+        characteristic.save()
         return redirect('profile')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['characteristics'] = Characteristic.objects.all()
+        context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
         return context
