@@ -7,7 +7,7 @@
         <aside class="block">
         <!-- left side block -->
           {% for char in characteristics %}
-          <p>{{ char.name }}</p>
+          <h2><a href="{% url 'characteristic_detail' pk=char.pk %}">{{ char.name }}</a></h2>
           {% endfor %}
         <p>Add new ...</p>
         </aside>
