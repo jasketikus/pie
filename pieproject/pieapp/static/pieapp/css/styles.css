@@ -37,6 +37,7 @@ aside {
 	width: 200px;
 	background-color: #eee;
 	padding: 10px;
+	font-size: 12px;
   }
 /* стили для футера */
 footer {
@@ -64,3 +65,10 @@ div {
 	margin: 10px;
 	vertical-align: top;
   }
+a {
+	font-family: 'Montserrat', sans-serif;
+	color: #444
+}
+a:hover {
+	color: #888
+}
