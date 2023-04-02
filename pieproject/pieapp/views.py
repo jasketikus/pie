@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .forms import *
 from .models import *
@@ -60,3 +60,17 @@ class AddCharacteristic(CreateView):
         context = super().get_context_data(**kwargs)
         context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
         return context
+
+class CharacteristicDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Characteristic
+    template_name = 'pieapp/characteristic_detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
+        return context
+
+    def test_func(self):
+        characteristic = self.get_object()
+        return self.request.user == characteristic.user
+    

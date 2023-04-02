@@ -12,7 +12,10 @@
         <p><a href="{% url 'addchar' %}">Add new...</a>></p>
         </aside>
     </div>
-    <div class="column">Колонка 2</div>
+    <div class="column">
+        <h1>{{ characteristic.name }}</h1>
+
+    </div>
     <div class="column">Колонка 3</div>
   </div>
 {% endblock %}

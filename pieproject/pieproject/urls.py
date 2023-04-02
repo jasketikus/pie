@@ -12,5 +12,5 @@ urlpatterns = [
     path('register/', RegisterPage.as_view(), name='register'),
     path('profile/', ProfilePage.as_view(), name='profile'),
     path('addchar/', AddCharacteristic.as_view(), name='addchar'),
-    
+    path('characteristic/<int:pk>/', CharacteristicDetailView.as_view(), name='characteristic_detail'),
 ]
