@@ -6,13 +6,13 @@ from bokeh.embed import file_html
 from bokeh.resources import CDN
 
 
-def create_graph():
-    fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
-    counts = [5, 3, 4, 2, 4, 6]
+def create_graph(**kwargs):
+    fruits = list(kwargs.keys())
+    counts = list(kwargs.values())
 
     source = ColumnDataSource(data=dict(fruits=fruits, counts=counts))
 
-    p = figure(x_range=fruits, height=350, toolbar_location=None, title="Fruit Counts")
+    p = figure(x_range=fruits, height=350, toolbar_location=None, title="Characteristics")
 
     p.vbar(x='fruits', top='counts', width=0.9, source=source, legend_field="fruits",
         line_color='white', fill_color=factor_cmap('fruits', palette=Bright6, factors=fruits))

@@ -23,7 +23,8 @@ class ProfilePage(LoginRequiredMixin, View):
     raise_exception = True
     def get(self, request):
         characteristics = Characteristic.objects.filter(user=request.user)
-        my_graph = graph.create_graph()
+        char_rating = {char.name: char.rating for char in characteristics}
+        my_graph = graph.create_graph(**char_rating)
         return render(request, 'pieapp/profile.html', {'characteristics': characteristics, "graph": my_graph})
 
 class RegisterPage(CreateView):
