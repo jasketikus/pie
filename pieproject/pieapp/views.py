@@ -69,8 +69,3 @@ class CharacteristicDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailVi
         context = super().get_context_data(**kwargs)
         context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
         return context
-
-    def test_func(self):
-        characteristic = self.get_object()
-        return self.request.user == characteristic.user
-    
