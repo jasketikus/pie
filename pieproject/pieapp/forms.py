@@ -23,10 +23,11 @@ class LoginUserForm(AuthenticationForm):
 
 class AddCharacteristicForm(forms.ModelForm):
     name = forms.CharField(label='Name', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    rating = forms.IntegerField(label='Rating', widget=forms.NumberInput(attrs={'class': 'form-input'}))
     
     class Meta:
         model = Characteristic
-        fields = ('name', )
+        fields = ('name', 'rating', )
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
