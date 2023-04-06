@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .forms import *
 from .models import *
+from . import graph
 
 class HomePage(View):
     def get(self, request):
@@ -22,7 +23,8 @@ class ProfilePage(LoginRequiredMixin, View):
     raise_exception = True
     def get(self, request):
         characteristics = Characteristic.objects.filter(user=request.user)
-        return render(request, 'pieapp/profile.html', {'characteristics': characteristics})
+        my_graph = graph.create_graph()
+        return render(request, 'pieapp/profile.html', {'characteristics': characteristics, "graph": my_graph})
 
 class RegisterPage(CreateView):
     form_class = RegisterUserForm

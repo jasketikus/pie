@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 #python-decouple
 from decouple import config
+from bokeh.resources import CDN
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -116,6 +117,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+BOKEH_RESOURCES = CDN.render_js()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
