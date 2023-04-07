@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -76,4 +76,31 @@ class CharacteristicDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailVi
     def test_func(self):
         characteristic = self.get_object()
         return self.request.user == characteristic.user
+
+class CharacteristicUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Characteristic
+    template_name = 'pieapp/addchar.html'
+    form_class = AddCharacteristicForm
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
+        return context
+    
+    def test_func(self):
+        characteristic = self.get_object()
+        return self.request.user == characteristic.user
+
+class CharacteristicDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Characteristic
+    template_name = 'pieapp/delchar.html'
+    success_url = '/profile'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
+        return context
+
+    def test_func(self):
+        characteristic = self.get_object()
+        return self.request.user == characteristic.user

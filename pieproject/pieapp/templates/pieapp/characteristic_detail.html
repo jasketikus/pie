@@ -16,6 +16,11 @@
         <h1>{{ characteristic.name }}</h1>
 
     </div>
-    <div class="column"><h3>{{ characteristic.rating }}</h3></div>
+    <div class="column">
+      <h3>{{ characteristic.rating }}</h3>
+      <a href="{% url 'characteristic_update' pk=characteristic.pk %}">Update characteristic</a>
+      <a href="{% url 'characteristic_delete' pk=characteristic.pk %}">Delete</a>
+    </div>  
+
   </div>
 {% endblock %}

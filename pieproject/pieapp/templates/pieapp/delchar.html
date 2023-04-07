@@ -9,19 +9,16 @@
           {% for char in characteristics %}
           <h2><a href="{% url 'characteristic_detail' pk=char.pk %}">{{ char.name }}</a></h2>
           {% endfor %}
-        <p>Add new ...</p>
+          <p><a href="{% url 'addchar' %}">Add new...</a>></p>
         </aside>
     </div>
     <div class="column">
+        <h2> Are you sure ?</h2>
         <form method="post">
             {% csrf_token %}
+
         
-            {% for f in form %}
-                <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-                <div class="form-error">{{ f.errors }}</div>
-            {% endfor %}
-        
-            <button type="submit">Save Characeristic</button>
+            <button type="submit">Delete Characteristic</button>
         </form>
     </div>
 

@@ -13,4 +13,6 @@ urlpatterns = [
     path('profile/', ProfilePage.as_view(), name='profile'),
     path('addchar/', AddCharacteristic.as_view(), name='addchar'),
     path('characteristic/<int:pk>/', CharacteristicDetailView.as_view(), name='characteristic_detail'),
+    path('characteristic/<int:pk>/update', CharacteristicUpdateView.as_view(), name='characteristic_update'),
+    path('characteristic/<int:pk>/delete', CharacteristicDeleteView.as_view(), name='characteristic_delete'),
 ]
