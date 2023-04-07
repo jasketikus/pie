@@ -1,7 +1,7 @@
 {% extends 'pieapp/base.html' %}
 
 {% block content %}
-<h1>Welcome, {{user.username}}</h1>
+<h1>Your characteristics, {{user.username}}</h1>
 <div class="row">
     <div class="column">
         <aside class="block">
@@ -9,7 +9,7 @@
           {% for char in characteristics %}
           <h2><a href="{% url 'characteristic_detail' pk=char.pk %}">{{ char.name }}</a></h2>
           {% endfor %}
-        <p><a href="{% url 'addchar' %}">Add new...</a>></p>
+          <h4><a href="{% url 'addchar' %}">Add new...</a></h4>
         </aside>
     </div>
     <div class="column">{{ graph|safe }}</div>
