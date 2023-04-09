@@ -16,7 +16,8 @@ class HomePage(View):
         if request.user.is_authenticated:
             return redirect('profile')
         else:
-            return render(request, 'pieapp/index.html')
+            title = 'PIE constructor app'
+            return render(request, 'pieapp/index.html', {'title': title})
     
 class ProfilePage(LoginRequiredMixin, View):
     template_name = 'pieapp/profile.html'
@@ -25,7 +26,12 @@ class ProfilePage(LoginRequiredMixin, View):
         characteristics = Characteristic.objects.filter(user=request.user)
         char_rating = {char.name: char.rating for char in characteristics}
         my_graph = graph.create_graph(**char_rating)
-        return render(request, 'pieapp/profile.html', {'characteristics': characteristics, "graph": my_graph})
+        title = f'PIE app: {str(self.request.user)} - characteristics'
+        return render(
+            request, 
+            'pieapp/profile.html', 
+            {'characteristics': characteristics, 'graph': my_graph, 'title': title}
+            )
 
 class RegisterPage(CreateView):
     form_class = RegisterUserForm
@@ -36,6 +42,11 @@ class RegisterPage(CreateView):
         user = form.save()
         login(self.request, user)
         return redirect('home')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Registration'
+        return context
 
 class LoginPage(LoginView):
     form_class = LoginUserForm
@@ -43,6 +54,11 @@ class LoginPage(LoginView):
     
     def get_success_url(self):
         return reverse_lazy('home')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Log in PIE app'
+        return context
 
 
 def logout_user(request):
@@ -62,6 +78,7 @@ class AddCharacteristic(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
+        context ['title'] = 'Add new characteristic PIE app'
         return context
 
 class CharacteristicDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
@@ -71,6 +88,7 @@ class CharacteristicDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailVi
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
+        context['title'] = f'{self.get_object().name} characteristic PIE app'
         return context
 
     def test_func(self):
@@ -85,6 +103,7 @@ class CharacteristicUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateVi
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
+        context['title'] = f'{self.get_object().name} update PIE app'
         return context
     
     def test_func(self):
@@ -99,6 +118,7 @@ class CharacteristicDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVi
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['characteristics'] = Characteristic.objects.filter(user=self.request.user)
+        context['title'] = f'{self.get_object().name} delete PIE app'
         return context
 
     def test_func(self):
