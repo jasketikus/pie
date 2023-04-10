@@ -4,7 +4,10 @@ html, body {
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	color: #444
+	color: #ffffff
+}
+body {
+	background-color: #111;
 }
 .logo {
 	background: url('../images/logo.png') no-repeat 10px 5px;
@@ -18,12 +21,13 @@ html, body {
 }
 header {
 	display: flex;
-	background-color: #ffffff;
+	background-color: #111;
 	padding: 10px;
   
 }
 main {
 	display: flex;
+	background-color: #111;
 	flex-direction: column;
 	align-items: center;
 	padding: 10px;
@@ -31,13 +35,13 @@ main {
 
 aside {
 	width: 200px;
-	background-color: #ffffff;
+	background-color: #111;
 	padding: 10px;
 	font-size: 12px;
   }
 footer {
 	text-align: center;
-	background-color: #ffffff;
+	background-color: #111;
 	padding: 10px;
 	position: absolute;
 	bottom: 0;
@@ -61,39 +65,40 @@ div {
   }
 a {
 	font-family: 'Montserrat', sans-serif;
-	color: #444
+	color: #ffffff
 }
 a:hover {
 	text-decoration: none;
-	color: #888
+	color: #666
 }
 button[type="submit"] {
-	background: #0066A2;
+	border-radius: 10px;
+	background: #868686;
 	color: white;
 	border-style: outset;
-	border-color: #0066A2;
+	border-color: #868686;
 	height: 50px;
-	width: 100px;
+	width: 125px;
 	font-family: 'Montserrat', sans-serif;
 	text-shadow: none;
 }
 button[type="submit"]:hover {
-	background: #004974;
+	background: #868686;
 	color: white;
 	border-style: outset;
-	border-color: #0066A2;
+	border-color: #000000;
 	height: 50px;
-	width: 100px;
+	width: 125px;
 	font-family: 'Montserrat', sans-serif;
-	text-shadow: none;
+	text-shadow: None;
 }
 button[type="submit"]:active {
-	background: #009cf7;
+	background: #709261;
 	color: white;
 	border-style: outset;
-	border-color: #0066A2;
+	border-color: #000000;
 	height: 50px;
-	width: 100px;
+	width: 125px;
 	font-family: 'Montserrat', sans-serif;
 	text-shadow: none;
 }
