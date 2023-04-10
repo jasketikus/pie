@@ -24,7 +24,7 @@ class ProfilePage(LoginRequiredMixin, View):
     raise_exception = True
     def get(self, request):
         characteristics = Characteristic.objects.filter(user=request.user)
-        char_rating = {char.name: char.rating for char in characteristics}
+        char_rating = {char.name: abs(char.rating) for char in characteristics}
         my_graph = graph.create_graph(**char_rating)
         title = f'PIE app: {str(self.request.user)} - characteristics'
         return render(

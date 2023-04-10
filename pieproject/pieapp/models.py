@@ -9,7 +9,7 @@ class Characteristic(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Author')
     name = models.CharField(max_length=30)
     is_published = models.BooleanField(default=True, verbose_name='Published')
-    rating = models.PositiveBigIntegerField(verbose_name='Rating')
+    rating = models.IntegerField(verbose_name='Rating')
 
     def get_absolute_url(self):
         return '/profile/'
