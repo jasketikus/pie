@@ -13,6 +13,7 @@ this is a project, where i try to create pie-chart on django-site.
 > pip install -r ./pieproject/requirements.txt
 4. create .env file with:
 > SECRET_KEY = your django key
+
 > DEBUG = True
 5. change directory to pieproject
 > cd pieproject
