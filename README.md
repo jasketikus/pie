@@ -1,5 +1,5 @@
 # pie
-this is a project, where i try to create pie-chart on django-site.
+This is the project, where i try to create a pie-chart on a django-site.
 ## Start project
  > git clone https://github.com/jasketikus/pie.git
 
